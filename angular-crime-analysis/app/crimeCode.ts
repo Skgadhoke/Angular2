@@ -1,6 +1,6 @@
 export class CrimeCodes
 {
-  id: number;
+  id: string;
   desc1: string;
   desc2: string;
 }

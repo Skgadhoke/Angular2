@@ -10,18 +10,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var CODES = [
-    { id: 1025, desc1: 'ARSON', desc2: 'AGGRAVATED' },
-    { id: 1090, desc1: 'ARSON', desc2: 'ATTEMPT ARSON' },
-    { id: 1010, desc1: 'ARSON', desc2: 'BY EXPLOSIVE ' },
-    { id: 1020, desc1: 'ARSON', desc2: 'BY FIRE ' },
-    { id: 1030, desc1: 'ARSON', desc2: 'POS: CHEMICAL/DRY-ICE DEVICE' }
+    { id: '1025', desc1: 'ARSON', desc2: 'AGGRAVATED' },
+    { id: '1090', desc1: 'ARSON', desc2: 'ATTEMPT ARSON' },
+    { id: '1010', desc1: 'ARSON', desc2: 'BY EXPLOSIVE ' },
+    { id: '1020', desc1: 'ARSON', desc2: 'BY FIRE ' },
+    { id: '1030', desc1: 'ARSON', desc2: 'POS: CHEMICAL/DRY-ICE DEVICE' }
+];
+var CRIMES = [
+    { IUCR: '1025', domestic: 'FALSE', arrest: 'FALSE' },
+    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
+    { IUCR: '1020', domestic: 'FALSE', arrest: 'TRUE' },
 ];
 var AppComponent = (function () {
     function AppComponent() {
         this.codes = [];
+        this.crimeInfo = [];
+        this.codeName = '';
+        this.value = '';
+        this.disp = 0;
     }
+    AppComponent.prototype.onEnter = function (value) {
+        this.value = value;
+        this.codes = CODES;
+        this.crimeInfo = CRIMES;
+        this.crimeInfo = CRIMES.filter(function (ci) { return ci.IUCR === value; });
+        this.disp = 1;
+    };
+    AppComponent.prototype.searchIUCR = function (cName) {
+        this.codes = CODES;
+        this.codeName = cName;
+        this.value = cName;
+    };
     AppComponent.prototype.dispCrimeCodes = function () {
         this.codes = CODES;
+        this.disp = 2;
     };
     AppComponent = __decorate([
         core_1.Component({
