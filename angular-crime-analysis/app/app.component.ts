@@ -30,7 +30,7 @@ export class AppComponent
   value = '';
   disp = 0;
 
-    onEnter(value: string) {
+  onEnter(value: string) {
 	this.value = value; 
 	this.codes = CODES;
 	this.crimeInfo = CRIMES;
@@ -48,4 +48,14 @@ export class AppComponent
     this.codes = CODES; 
     this.disp = 2;
   }
+
+  onEnterDom(value: string) {
+	this.value = value; 
+	this.codes = CODES;
+	this.crimeInfo = CRIMES.filter(ci => ci.domestic === value);
+	this.disp = 3;
+    }
+
+
+
 }

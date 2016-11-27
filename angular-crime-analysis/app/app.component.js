@@ -45,6 +45,12 @@ var AppComponent = (function () {
         this.codes = CODES;
         this.disp = 2;
     };
+    AppComponent.prototype.onEnterDom = function (value) {
+        this.value = value;
+        this.codes = CODES;
+        this.crimeInfo = CRIMES.filter(function (ci) { return ci.domestic === value; });
+        this.disp = 3;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',

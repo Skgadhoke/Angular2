@@ -1,23 +1,43 @@
 <my-navbar></my-navbar>
 <h2> Crime Data Visualization in Chicago</h2>
-<button (click)="dispCrimeCodes()"> Display Crime Codes </button>
-<input placeholder = "enter when done"  #myCode (keyup.enter)="onEnter(myCode.value)">
 
-<div *ngIf = "disp === 2">
-<ul class="codes">
-  <h4>IUCR  Primary Desc  Secondary Desc </h4>
-   <li *ngFor="let code of codes">
-     <span class="badge">{{code.id}}</span> {{code.desc1}}  {{code.desc2}}
-  </li>
-</ul>
+<div id="side-bar" style="height: 400px; width: 150px; float: left">
+  <button (click)="dispCrimeCodes()"> Display Crime Codes</button> <br><br>
+
+  <label>Search By... </label> <br><hr>
+
+  <label id = "myLabels"> IUCR: </label>
+  <input placeholder = "enter when done"  #myCode (keyup.enter)="onEnter(myCode.value)" id = "myBoxes">
+  <br>
+
+  <label id = "myLabels"> DOMESTIC: </label>
+  <input placeholder = "enter when done"  #myDom (keyup.enter)="onEnterDom(myDom.value)" id = "myBoxes">
 </div>
 
-<div *ngIf = "disp === 1">
-  <h2> Information on IUCR: {{value}}</h2>
-    <li *ngFor="let crime of crimeInfo">
-       <span class="badge">{{crime.IUCR}}</span> {{crime.domestic}}  {{crime.arrest}}
+<div id="disp-info" style="width: 900px; height: 400px; border: 2px solid navy; margin-left: 250">
+  <div *ngIf = "disp === 2">
+    <h4 style= "padding-left: 10px"> Crime Codes: IUCR, Primary Desc, Secondary Desc </h4>
+      <li style="padding-left: 10px" *ngFor="let code of codes">
+        <span class="badge">{{code.id}},</span> {{code.desc1}},  {{code.desc2}}
+      </li>
+  </div>
+
+  <div *ngIf = "disp === 1">
+    <h4 style="padding-left: 10px"> Crimes filtered by IUCR: {{value}}</h4>
+    <li style="padding-left: 10px" *ngFor="let crime of crimeInfo">
+       <span class="badge">{{crime.IUCR}},</span> {{crime.domestic}},  {{crime.arrest}}
     </li>
 
+   </div>
+
+   <div *ngIf = "disp === 3">
+     <h4 style="padding-left: 10px"> Crimes filtered by Domestic: {{value}}</h4>
+     <li style="padding-left: 10px" *ngFor="let crime of crimeInfo">
+        <span class="badge">{{crime.IUCR}},</span> {{crime.domestic}},  {{crime.arrest}}
+     </li>
+   </div>
 </div>
+
+
 <my-footer></my-footer>
 
