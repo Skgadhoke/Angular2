@@ -9,17 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var FooterComponent = (function () {
-    function FooterComponent() {
+var DisplayComponent = (function () {
+    function DisplayComponent() {
     }
-    FooterComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], DisplayComponent.prototype, "crimeInfo", void 0);
+    DisplayComponent = __decorate([
         core_1.Component({
-            selector: 'my-footer',
-            templateUrl: './app/footer.component.html'
+            selector: 'my-display',
+            templateUrl: '/app/display.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], FooterComponent);
-    return FooterComponent;
+    ], DisplayComponent);
+    return DisplayComponent;
 }());
-exports.FooterComponent = FooterComponent;
-//# sourceMappingURL=footer.component.js.map
+exports.DisplayComponent = DisplayComponent;
+//# sourceMappingURL=display.component.js.map

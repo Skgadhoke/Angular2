@@ -1,0 +1,16 @@
+<div id="side-bar" style="height: 400px; width: 150px; float: left">
+  <button (click)="dispCrimeCodes()"> Display Crime Codes</button> <br><br>
+
+  <label>Search By... </label> <br><hr>
+
+  <label id = "myLabels"> IUCR: </label>
+  <input placeholder = "enter when done"  #myCode (keyup.enter)="onEnter(myCode.value)" id = "myBoxes">
+  <br>
+
+  <label id = "myLabels"> DOMESTIC: </label>
+  <input placeholder = "enter when done"  #myDom (keyup.enter)="onEnterDom(myDom.value)" id = "myBoxes">
+</div>
+
+
+<my-display >
+</my-display>
