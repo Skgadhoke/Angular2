@@ -1,0 +1,12 @@
+<my-navbar></my-navbar>
+<h2> Crime Data Visualization in Chicago</h2>
+<button (click)="dispCrimeCodes()"> Display Crime Codes </button>
+
+<ul class="codes">
+<h4>IUCR  Primary Desc  Secondary Desc </h4>
+<li *ngFor="let code of codes">
+<span class="badge">{{code.id}}</span> {{code.desc1}}  {{code.desc2}}
+</li>
+</ul>
+<my-footer></my-footer>
+
