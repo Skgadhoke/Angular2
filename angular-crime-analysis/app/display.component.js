@@ -16,6 +16,14 @@ var DisplayComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Array)
     ], DisplayComponent.prototype, "crimeInfo", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], DisplayComponent.prototype, "disp", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], DisplayComponent.prototype, "codes", void 0);
     DisplayComponent = __decorate([
         core_1.Component({
             selector: 'my-display',

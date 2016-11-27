@@ -9,6 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var CODES = [
+    { id: '1025', desc1: 'ARSON', desc2: 'AGGRAVATED' },
+    { id: '1090', desc1: 'ARSON', desc2: 'ATTEMPT ARSON' },
+    { id: '1010', desc1: 'ARSON', desc2: 'BY EXPLOSIVE ' },
+    { id: '1020', desc1: 'ARSON', desc2: 'BY FIRE ' },
+    { id: '1030', desc1: 'ARSON', desc2: 'POS: CHEMICAL/DRY-ICE DEVICE' }
+];
+var CRIMES = [
+    { IUCR: '1025', domestic: 'FALSE', arrest: 'FALSE' },
+    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
+    { IUCR: '1020', domestic: 'FALSE', arrest: 'TRUE' },
+];
 var SideBarComponent = (function () {
     function SideBarComponent() {
         this.codes = [];

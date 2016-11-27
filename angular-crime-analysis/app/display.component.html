@@ -1,4 +1,5 @@
 <h1>Hello</h1>
+
 <div id="disp-info" style="width: 900px; height: 400px; border: 2px solid navy; margin-left: 250">
   <div *ngIf = "disp === 2">
     <h4 style= "padding-left: 10px"> Crime Codes: IUCR, Primary Desc, Secondary Desc </h4>
@@ -6,5 +7,20 @@
         <span class="badge">{{code.id}},</span> {{code.desc1}},  {{code.desc2}}
       </li>
   </div>
+
+  <div *ngIf = "disp === 1">
+    <h4 style="padding-left: 10px"> Crimes filtered by IUCR: {{value}}</h4>
+    <li style="padding-left: 10px" *ngFor="let crime of crimeInfo">
+       <span class="badge">{{crime.IUCR}},</span> {{crime.domestic}},  {{crime.arrest}}
+    </li>
+
+   </div>
+
+   <div *ngIf = "disp === 3">
+     <h4 style="padding-left: 10px"> Crimes filtered by Domestic: {{value}}</h4>
+     <li style="padding-left: 10px" *ngFor="let crime of crimeInfo">
+        <span class="badge">{{crime.IUCR}},</span> {{crime.domestic}},  {{crime.arrest}}
+     </li>
+   </div>
 </div>
 

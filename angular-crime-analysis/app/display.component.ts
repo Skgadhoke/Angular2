@@ -10,4 +10,6 @@ import { CrimeInfo } from './crimes';
 export class DisplayComponent 
 {
  @Input() crimeInfo:CrimeInfo[];
+ @Input() disp: number;
+ @Input() codes: CrimeCodes[];
 }
