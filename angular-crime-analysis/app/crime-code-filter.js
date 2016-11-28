@@ -9,22 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CRIMES = [
-    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
-    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
-    { IUCR: '1020', domestic: 'FALSE', arrest: 'TRUE' },
-];
-var CrimeInfoService = (function () {
-    function CrimeInfoService() {
+var CrimeCodePipe = (function () {
+    function CrimeCodePipe() {
     }
-    CrimeInfoService.prototype.getCrimeInfo = function () {
-        return CRIMES;
+    CrimeCodePipe.prototype.transform = function (list, filterByField, filterValue) {
+        if (!filterByField || !filterValue) {
+            return list;
+        }
+        return list.filter(function (item) {
+            var field = item[filterByField].toLowerCase();
+            var filter = filterValue.toLocaleLowerCase();
+            return field.indexOf(filter) >= 0;
+        });
     };
-    CrimeInfoService = __decorate([
-        core_1.Injectable(), 
+    CrimeCodePipe = __decorate([
+        core_1.Pipe({
+            name: 'CCFilter',
+            pure: false
+        }), 
         __metadata('design:paramtypes', [])
-    ], CrimeInfoService);
-    return CrimeInfoService;
+    ], CrimeCodePipe);
+    return CrimeCodePipe;
 }());
-exports.CrimeInfoService = CrimeInfoService;
-//# sourceMappingURL=crimeinfo-service.js.map
+exports.CrimeCodePipe = CrimeCodePipe;
+//# sourceMappingURL=crime-code-filter.js.map

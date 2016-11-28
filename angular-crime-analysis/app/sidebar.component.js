@@ -21,12 +21,23 @@ var SideBarComponent = (function () {
         this.value = '';
         this.disp = 0;
         this.iucr = '';
+        this.domestic = '';
     }
     SideBarComponent.prototype.onSubmit = function (form) {
         var _this = this;
         var crimes;
         crimes = this.crimeinfoService.getCrimeInfo();
-        this.crimeInfo = crimes.filter(function (ci) { return ci.IUCR === _this.iucr; });
+        if (this.iucr === "" && this.domestic === "") {
+            this.crimeInfo = crimes;
+        }
+        else if (this.iucr !== "" && this.domestic !== "") {
+            this.crimeInfo = crimes.filter(function (ci) { return ci.IUCR === _this.iucr && ci.domestic === _this.domestic.toUpperCase(); });
+        }
+        else if (this.iucr !== "") {
+            this.crimeInfo = crimes.filter(function (ci) { return ci.IUCR === _this.iucr; });
+        }
+        else
+            this.crimeInfo = crimes.filter(function (ci) { return ci.domestic === _this.domestic.toUpperCase(); });
         this.disp = 1;
     };
     SideBarComponent.prototype.onEnter = function (value) {

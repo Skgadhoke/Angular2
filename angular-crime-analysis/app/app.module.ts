@@ -9,6 +9,9 @@ import { DisplayComponent } from './display.component';
 import { FooterComponent } from './footer.component'; 
 import { CrimeCodeService } from './services/crimecode-service';
 import { CrimeInfoService } from './services/crimeinfo-service';
+import { CrimeCodePipe } from './crime-code-filter';
+import { ArrayFilterPipe } from './my-filter';
+
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
 
@@ -17,7 +20,9 @@ import { CrimeInfoService } from './services/crimeinfo-service';
       NavBarComponent, 
       SideBarComponent,
       DisplayComponent,
-      FooterComponent ],
+      FooterComponent,
+      CrimeCodePipe,
+      ArrayFilterPipe ],
   providers:    [CrimeCodeService, CrimeInfoService],
   bootstrap:    [ AppComponent ]
 })

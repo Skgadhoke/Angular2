@@ -8,23 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var CRIMES = [
-    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
-    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
-    { IUCR: '1020', domestic: 'FALSE', arrest: 'TRUE' },
-];
-var CrimeInfoService = (function () {
-    function CrimeInfoService() {
+var core_1 = require("@angular/core");
+var ArrayFilterPipe = (function () {
+    function ArrayFilterPipe() {
     }
-    CrimeInfoService.prototype.getCrimeInfo = function () {
-        return CRIMES;
+    ArrayFilterPipe.prototype.transform = function (items, conditions) {
+        return items.filter(function (item) {
+            for (var field in conditions) {
+                if (conditions[field] && item[field].indexOf(conditions[field])) {
+                    return false;
+                }
+            }
+            return true;
+        });
     };
-    CrimeInfoService = __decorate([
-        core_1.Injectable(), 
+    ArrayFilterPipe = __decorate([
+        core_1.Pipe({
+            name: "filter",
+            pure: false
+        }), 
         __metadata('design:paramtypes', [])
-    ], CrimeInfoService);
-    return CrimeInfoService;
+    ], ArrayFilterPipe);
+    return ArrayFilterPipe;
 }());
-exports.CrimeInfoService = CrimeInfoService;
-//# sourceMappingURL=crimeinfo-service.js.map
+exports.ArrayFilterPipe = ArrayFilterPipe;
+//# sourceMappingURL=my-filter.js.map
