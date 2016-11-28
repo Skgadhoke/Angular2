@@ -19,14 +19,29 @@ export class SideBarComponent
   value = '';
   disp = 0;
   iucr = '';
+  domestic = '';
   
 
 constructor(private crimecodesService: CrimeCodeService, private crimeinfoService: CrimeInfoService) { }
 
+
   onSubmit(form){
       let crimes: CrimeInfo [];
       crimes = this.crimeinfoService.getCrimeInfo();
-      this.crimeInfo = crimes.filter(ci => ci.IUCR === this.iucr);
+      if(this.iucr === "" && this.domestic === "")
+      {
+         this.crimeInfo = crimes;
+      }
+      else if(this.iucr !== "" && this.domestic !== "")
+      {
+        this.crimeInfo = crimes.filter(ci => ci.IUCR === this.iucr  && ci.domestic === this.domestic.toUpperCase());
+      }
+      else if(this.iucr !== "" )
+      {
+            this.crimeInfo = crimes.filter(ci => ci.IUCR === this.iucr );    
+      }else
+          this.crimeInfo = crimes.filter(ci => ci.domestic === this.domestic.toUpperCase());
+      
       this.disp = 1;
   }
   onEnter(value: string) {

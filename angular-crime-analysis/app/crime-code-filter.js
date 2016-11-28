@@ -9,30 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var DisplayComponent = (function () {
-    function DisplayComponent() {
-        this.filterCriteria = "1025";
+var CrimeCodePipe = (function () {
+    function CrimeCodePipe() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], DisplayComponent.prototype, "crimeInfo", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], DisplayComponent.prototype, "disp", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], DisplayComponent.prototype, "codes", void 0);
-    DisplayComponent = __decorate([
-        core_1.Component({
-            selector: 'my-display',
-            templateUrl: "/app/display.component.html"
+    CrimeCodePipe.prototype.transform = function (list, filterByField, filterValue) {
+        if (!filterByField || !filterValue) {
+            return list;
+        }
+        return list.filter(function (item) {
+            var field = item[filterByField].toLowerCase();
+            var filter = filterValue.toLocaleLowerCase();
+            return field.indexOf(filter) >= 0;
+        });
+    };
+    CrimeCodePipe = __decorate([
+        core_1.Pipe({
+            name: 'CCFilter',
+            pure: false
         }), 
         __metadata('design:paramtypes', [])
-    ], DisplayComponent);
-    return DisplayComponent;
+    ], CrimeCodePipe);
+    return CrimeCodePipe;
 }());
-exports.DisplayComponent = DisplayComponent;
-//# sourceMappingURL=display.component.js.map
+exports.CrimeCodePipe = CrimeCodePipe;
+//# sourceMappingURL=crime-code-filter.js.map

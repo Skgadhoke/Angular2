@@ -10,6 +10,7 @@ const CRIMES: CrimeInfo[] = [
 
 @Injectable()
 export class CrimeInfoService {
+
   getCrimeInfo(): CrimeInfo[] {
     return  CRIMES;
 } }
