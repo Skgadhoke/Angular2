@@ -1,14 +1,24 @@
 <div id="side-bar" style="height: 400px; width: 150px; float: left">
   <button (click)="dispCrimeCodes()"> Display Crime Codes</button> <br><br>
 
-  <label>Search By... </label> <br><hr>
+  
+<div class="container">
+    <p>Crime Search By…</p>
+    <form (ngSubmit)="onSubmit()" #sf="ngForm">
+      <div class="form-group">
+        <label for=“cur”>IUCR:</label>
+        <input type="text" class="form-control" id=“iucr” name="iucr" [(ngModel)]="iucr">
+      </div>
+      <div class="form-group">
+        <label for=“domestic”>Domestic:</label>
+        <input type="text" class="form-control" id=“domestic”>
+      </div>
+      <button type="submit" >Search</button>
+    </form>
+</div>
 
-  <label id = "myLabels"> IUCR: </label>
-  <input placeholder = "enter when done"  #myCode (keyup.enter)="onEnter(myCode.value)" id = "myBoxes">
-  <br>
 
-  <label id = "myLabels"> DOMESTIC: </label>
-  <input placeholder = "enter when done"  #myDom (keyup.enter)="onEnterDom(myDom.value)" id = "myBoxes">
+
 </div>
 
 

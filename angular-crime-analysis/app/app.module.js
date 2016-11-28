@@ -16,6 +16,8 @@ var navbar_component_1 = require('./navbar.component');
 var sidebar_component_1 = require('./sidebar.component');
 var display_component_1 = require('./display.component');
 var footer_component_1 = require('./footer.component');
+var crimecode_service_1 = require('./services/crimecode-service');
+var crimeinfo_service_1 = require('./services/crimeinfo-service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,6 +29,7 @@ var AppModule = (function () {
                 sidebar_component_1.SideBarComponent,
                 display_component_1.DisplayComponent,
                 footer_component_1.FooterComponent],
+            providers: [crimecode_service_1.CrimeCodeService, crimeinfo_service_1.CrimeInfoService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

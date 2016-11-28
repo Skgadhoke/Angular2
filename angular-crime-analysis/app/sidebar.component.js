@@ -9,53 +9,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var CODES = [
-    { id: '1025', desc1: 'ARSON', desc2: 'AGGRAVATED' },
-    { id: '1090', desc1: 'ARSON', desc2: 'ATTEMPT ARSON' },
-    { id: '1010', desc1: 'ARSON', desc2: 'BY EXPLOSIVE ' },
-    { id: '1020', desc1: 'ARSON', desc2: 'BY FIRE ' },
-    { id: '1030', desc1: 'ARSON', desc2: 'POS: CHEMICAL/DRY-ICE DEVICE' }
-];
-var CRIMES = [
-    { IUCR: '1025', domestic: 'FALSE', arrest: 'FALSE' },
-    { IUCR: '1025', domestic: 'TRUE', arrest: 'FALSE' },
-    { IUCR: '1020', domestic: 'FALSE', arrest: 'TRUE' },
-];
+var crimecode_service_1 = require('./services/crimecode-service');
+var crimeinfo_service_1 = require('./services/crimeinfo-service');
 var SideBarComponent = (function () {
-    function SideBarComponent() {
+    function SideBarComponent(crimecodesService, crimeinfoService) {
+        this.crimecodesService = crimecodesService;
+        this.crimeinfoService = crimeinfoService;
         this.codes = [];
         this.crimeInfo = [];
         this.codeName = '';
         this.value = '';
         this.disp = 0;
+        this.iucr = '';
     }
+    SideBarComponent.prototype.onSubmit = function (form) {
+        var _this = this;
+        var crimes;
+        crimes = this.crimeinfoService.getCrimeInfo();
+        this.crimeInfo = crimes.filter(function (ci) { return ci.IUCR === _this.iucr; });
+        this.disp = 1;
+    };
     SideBarComponent.prototype.onEnter = function (value) {
         this.value = value;
-        this.codes = CODES;
-        this.crimeInfo = CRIMES.filter(function (ci) { return ci.IUCR === value; });
+        var crimes;
+        crimes = this.crimeinfoService.getCrimeInfo();
+        this.crimeInfo = crimes.filter(function (ci) { return ci.IUCR === value; });
         this.disp = 1;
     };
     SideBarComponent.prototype.searchIUCR = function (cName) {
-        this.codes = CODES;
         this.codeName = cName;
         this.value = cName;
     };
     SideBarComponent.prototype.dispCrimeCodes = function () {
-        this.codes = CODES;
+        this.codes = this.crimecodesService.getCrimeCodes();
         this.disp = 2;
     };
     SideBarComponent.prototype.onEnterDom = function (value) {
         this.value = value;
-        this.codes = CODES;
-        this.crimeInfo = CRIMES.filter(function (ci) { return ci.domestic === value; });
-        this.disp = 3;
+        var crimes;
+        crimes = this.crimeinfoService.getCrimeInfo();
+        this.crimeInfo = crimes.filter(function (ci) { return ci.IUCR === value; });
+        this.disp = 1;
     };
     SideBarComponent = __decorate([
         core_1.Component({
             selector: 'my-sidebar',
+            providers: [crimecode_service_1.CrimeCodeService, crimeinfo_service_1.CrimeInfoService],
             templateUrl: './app/sidebar.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [crimecode_service_1.CrimeCodeService, crimeinfo_service_1.CrimeInfoService])
     ], SideBarComponent);
     return SideBarComponent;
 }());
