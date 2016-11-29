@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var DisplayComponent = (function () {
     function DisplayComponent() {
+        this.filterCriteria = "1025";
     }
     __decorate([
         core_1.Input(), 
@@ -27,7 +28,7 @@ var DisplayComponent = (function () {
     DisplayComponent = __decorate([
         core_1.Component({
             selector: 'my-display',
-            templateUrl: '/app/display.component.html'
+            templateUrl: "/app/display.component.html"
         }), 
         __metadata('design:paramtypes', [])
     ], DisplayComponent);
