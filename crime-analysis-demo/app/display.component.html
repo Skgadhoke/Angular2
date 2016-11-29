@@ -1,0 +1,13 @@
+
+
+<div id="disp-info" style="width: 900px; height: 400px; border: 2px solid navy; margin-left: 250">
+  <div *ngIf = "disp === 2">
+
+    <h4 style= "padding-left: 10px"> Crime Codes: IUCR, Primary Desc, Secondary Desc </h4>
+      <li style="padding-left: 10px" *ngFor="let code of codes ">
+        <span class="badge">{{code.id}},</span> {{code.desc1}},  {{code.desc2}}
+      </li>
+ 
+  </div>
+</div>
+
